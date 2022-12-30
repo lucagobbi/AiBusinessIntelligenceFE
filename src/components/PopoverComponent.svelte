@@ -3,20 +3,15 @@
     import {fade} from "svelte/transition";
     import {bottom} from "@popperjs/core";
     import type {OpenAIRequest} from "../model/OpenAIRequest";
+    import {cushmanModel, daVinciModel} from "../utils/Constants";
 
-    let params: OpenAIRequest = {
-        model: "code-davinci-002",
-        temperature: 0,
-        max_tokens: 0,
-        frequency_penalty: 0,
-        presence_penalty: 0,
-        top_p: 0
-    };
+    export let params: OpenAIRequest;
 
     let models = [
-        {value: "code-davinci-002", name: "code-davinci-002"},
-        {value: "code-cushman-001", name: "code-cushman-001"}
+        {value: daVinciModel, name: daVinciModel},
+        {value: cushmanModel, name: cushmanModel}
     ]
+
 </script>
 
 <Popover class="w-64 text-sm font-light "
@@ -28,10 +23,10 @@
 >
 
     <Label class="mb-1">Temperature: {params.temperature}</Label>
-    <Range id="range-steps" min="0" max="1" bind:value={params.temperature} step="0.01"/>
+    <Range id="range-steps"  min="0" max="1" bind:value={params.temperature} step="0.01"/>
     <Hr></Hr>
     <Label class="mb-1">Maximum length: {params.max_tokens}</Label>
-    <Range id="range-steps" min="0" max="1" bind:value={params.max_tokens} step="0.01"/>
+    <Range id="range-steps" min="0" max="8000" bind:value={params.max_tokens} step="1"/>
     <Hr></Hr>
     <Label class="mb-1">Frequency Penalty: {params.frequency_penalty}</Label>
     <Range id="range-steps" min="0" max="1" bind:value={params.frequency_penalty} step="0.01"/>
