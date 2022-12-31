@@ -55,9 +55,9 @@
   </div>
 
   {#if extraction}
-    <h6 class="mt-4 mb-3 text-stone-300 text-center">{statement}</h6>
+    <h6 class="mt-5 mb-2 text-stone-300 text-center">{statement}</h6>
   <div class="w-full flex justify-center">
-    <ResultComponent items={result}/>
+    <ResultComponent {statement} items={result}/>
   </div>
   {/if}
 
