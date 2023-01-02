@@ -37,7 +37,7 @@
 
 </script>
 
-<main class="dark:bg-slate-800 h-screen">
+<main class="dark:bg-slate-800 min-h-screen">
 
   <InfoComponent/>
 
@@ -54,12 +54,12 @@
     <SendComponent bind:openAiRequest={openAiRequest} on:sql={setStatement} on:result={setResult}/>
   </div>
 
-  {#if extraction}
-    <h6 class="mt-5 mb-2 text-stone-300 text-center">{statement}</h6>
-  <div class="w-full flex justify-center">
-    <ResultComponent {statement} items={result}/>
-  </div>
-  {/if}
+    {#if extraction}
+      <h6 class="mt-5 mb-1 text-stone-300 text-center">{statement}</h6>
+      <div class="w-full flex justify-center mb-5">
+        <ResultComponent items={result}/>
+      </div>
+    {/if}
 
   <FooterComponent/>
 </main>
